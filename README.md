@@ -1,100 +1,43 @@
-# Jenkins Installation 
+# Integration GIT,Maven,Jenkins & Tomcat
 
 # Steps
 
- -  step1: Check the basic and requirments
- -  step2: Check the java version 
- -  step3: Install the jenkins
- -  step4: Login to Jenkins and update password 
+ -  step1: Install Jenkins,Maven,GIT and Tomcat
+ -  step2: Install Basic plugins  
+ -  step3: Update Credentials
+ -  step4: Create maven project
+ -  step5: How to automate the Deployment
 
 
-# step1: Check the basic and requirments
+# step1: Install Jenkins,Maven,GIT and Tomcat
 
+  Please watch and follow the document attached  files in same repository
+  
+  Once Jenkins, maven and tomcat ready
 
-  Go to jenkins website  ``` https://www.jenkins.io/doc/book/installing/linux/#red-hat-centos ```
+#  step2: Install basic jenkins plugins
 
-#  step2: Check the java version
-
- Install java version
+install 𝐦𝐚𝐯𝐞𝐧 𝐢𝐧𝐯𝐨𝐤𝐞𝐫 𝐩𝐥𝐮𝐠𝐢𝐧 , 𝐦𝐚𝐯𝐞𝐧 𝐢𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧 , 𝐝𝐞𝐩𝐥𝐨𝐲 𝐭𝐨 𝐜𝐨𝐧𝐭𝐚𝐢𝐧𝐞𝐫 𝐩𝐥𝐮𝐠𝐢𝐧 , 𝐠𝐢𝐭𝐡𝐮𝐛 𝐢𝐧𝐭𝐞𝐠𝐫𝐚𝐭𝐢𝐨𝐧 install these plugin in manage jenkins--> plugin manager--> available --> install without restart
  
- ``` yum install java-1.8* ```
+# Step3: Update credentails 
 
- Check the java version 
-```
- java -version
- ```
- - To chcek the JDK path
- ```
- find / -name javac
- ``` 
-# Update the Jave home path
- ```
- cd
- ```
-``` vi .bash_profile ```
- 
- ```
- JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64
+ manage jenkisn --> Credentials --> jenkins --> Global credentials --> add credentail  ( tomcat credential as you added on manager-scripton tomcatuser.xml like .. <user username="𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐫" password="𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐫" roles="manager-script"/> )
 
-PATH=$PATH:$JAVA_HOME:$HOME/bin
- 
- ```
+# Step4: Create maven project 
 
-# step3: Install the jenkins
+create new item --> select maven project--> ok --> chcek Source Code Management --> git-->  delcared 'https://github.com/veejee2331/webapplication.git' (Repository URL)--->Brach to build 'main' --> Goals and option 'clean install package ' --> Then come to Post-build Actions--> Deploy war/ear to a container --> WAR/EAR files --> **/*.war --> Add Containers -->' Tomcat 9.x Remote  ' -->select credentail what you given -->  Tomcat url ' (give tomcat url ex: http://54.152.11.147:8090/) --> Save( select credntial)
 
-```
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
-```
-```
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-```
-```
-sudo yum upgrade
-```
-- Install JDK 
-```
-sudo yum install java-11-openjdk
-```
-```
-sudo yum install jenkins
-```
-```
-sudo systemctl daemon-reload
-```
-# Start the jenkins
+# Points need to chcek before click build
 
-You can enable the Jenkins service to start at boot with the command:
-```
-sudo systemctl enable jenkins
-```
+Manage Jenkins --> Golbal tool configuration --> 𝐀𝐫𝐞 𝐲𝐨𝐮 𝐮𝐩𝐝𝐚𝐭𝐞𝐝 𝐉𝐃𝐊 𝐨𝐫 𝐧𝐨𝐭
 
-You can start the Jenkins service with the command:
-```
-sudo systemctl start jenkins
-```
-You can check the status of the Jenkins service using the command:
-```
-sudo systemctl status jenkins
-```
-# Step 4. Login to jenkins console using of basic password and update plugins
+Manage Jenkins --> Golbal tool configuration --> 𝐀𝐫𝐞 𝐲𝐨𝐮 𝐮𝐩𝐝𝐚𝐭𝐞𝐝 𝐌𝐚𝐯𝐞𝐧 𝐇𝐨𝐦𝐞 𝐝𝐢𝐫𝐞𝐜𝐭𝐨𝐫𝐲  𝐨𝐫 𝐧𝐨𝐭
 
-http://publicIP:8080
+Thenkn click on build
 
-- Note : please make sure open the port on fireware level on respective cloud levels
+- How  you test --> http://IPADDRESS:8090/URI/ 
 
-- Change the password 
+#step5: How to automate the Deployment
 
-admin --> configure --> change the password --> then relogin
-
--  update the Java path 
-
-click manage jenkins --> click Gobal tool configuration --> jdk 
-
-
-
-Name: Jdk 
-
-Path : /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.amzn2.0.2.x86_64
-
-
+- Please update Configuration of maven job --> Build Triggers --> Poll SCM --> */2 * * * * --> save 
+- While updating the git url please Fork the folder ( https://github.com/veejee2331/webapplication.git) then modify index.html
