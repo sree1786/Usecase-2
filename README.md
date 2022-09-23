@@ -2,7 +2,12 @@
 
 # What you will be learn this usecase :
 
+As IT employees we work on many areas ( coding,support,infrastructure ) but while onboarding any new service we really are not aware how exactly code will deploy to production . There  are many possibilities  we can onboard our requirements to production .This use case will explain one of the ways to deploy our code to prod. 
 
+This video  I have explained  how to troubleshoot the issues  also . After this recording was completed I had recorded another video without troubleshooting . But I feel People need to learn how to correct the mistakes also . So I preferred to upload this video . Keep Fail and learn more 
+
+# Architecture
+![Watch the image](/GITTOMCATSREE.png)
 
 # Steps
 
@@ -45,3 +50,5 @@ Thenkn click on build
 
 - Please update Configuration of maven job --> Build Triggers --> Poll SCM --> */2 * * * * --> save 
 - While updating the git url please Fork the folder ( https://github.com/veejee2331/webapplication.git) then modify index.html
+
+Test Again 
