@@ -37,7 +37,7 @@ Thenkn click on build
 
 - How  you test --> http://IPADDRESS:8090/URI/ 
 
-#step5: How to automate the Deployment
+# step5: How to automate the Deployment
 
 - Please update Configuration of maven job --> Build Triggers --> Poll SCM --> */2 * * * * --> save 
 - While updating the git url please Fork the folder ( https://github.com/veejee2331/webapplication.git) then modify index.html
