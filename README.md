@@ -11,7 +11,7 @@
 
 # step1: Install Jenkins,Maven,GIT and Tomcat
 
-  Please watch and follow the document attached  files in same repository
+  Please watch ealier video's ( How to install Jenkins, Maven and Tomact) and follow the document attached  files in same repository
   
   Once Jenkins, maven and tomcat ready
 
